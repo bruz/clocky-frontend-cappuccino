@@ -31,12 +31,10 @@
     
     if (self)
     {
-	//
 	id		= aJSONObject.id ;
         name     	= aJSONObject.name ;
         projectStatus   = aJSONObject.project_status ;
         startDate    	= aJSONObject.start_date ;
-	//
 	projectSessions = [ProjectSession initFromJSONObjects:aJSONObject.project_sessions] ;
 
     }

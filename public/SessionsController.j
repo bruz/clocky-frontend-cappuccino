@@ -88,14 +88,6 @@
         [sessionListView setContent:sessions] ;
 
 	[currentProject setProjectSessions:sessions];
-
-	//if(currentSelections) {
-        //    [sessionListView setSelectionIndexes:currentSelections ] ;
-	//}
-	//else 
-	//{
-        //    [sessionListView setSelectionIndexes:[[CPIndexSet alloc] initWithIndex:0] ] ;
-	//}
     }
     else if (connection===addConnection)
     {

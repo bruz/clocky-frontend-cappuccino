@@ -65,13 +65,8 @@
     
     for (var i=0; i < someJSONObjects.length; i++) {
 
-        //var projectSession = [[ProjectSession alloc] initFromJSONObject:someJSONObjects[i]] ;
-        //[projectSessions addObject:projectSession] ;
-	// hack to handle different JSON for projects vs project_sessions
-	//var JSONObject = someJSONObjects[i];
 	var JSONObject = someJSONObjects[i].project_session;
 	if( !JSONObject ) { JSONObject = someJSONObjects[i]; }
-
 
         var projectSession = [[ProjectSession alloc] initFromJSONObject:JSONObject] ;
 
