@@ -29,3 +29,8 @@ browsers this requires a workaround of either putting the Cappuccino app inside 
 app public folder or running the Cappuccino app under a server that proxies requests for 
 the Rails backend. I've chosen the latter method via a simple Sinatra setup so that I can keep 
 the Rails backend and Cappuccino frontends separate.
+
+=== Other Clocky frontend implementations
+
+- {Clocky RestfulX Frontend}[http://github.com/bruz/clocky-frontend-restfulx]
+- {Clocky SproutCore Frontend}[http://github.com/bruz/clocky-frontend-sproutcore]
