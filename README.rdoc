@@ -6,7 +6,7 @@ the {Clocky Rails Backend}[http://github.com/bruz/clocky-backend-rails.git].
 
 === Running the Clocky Cappuccino Frontend
 
-Install the {Clocky Rails Backend}[http://github.com/bruz/clocky-backend-rails.git] as 
+Install the {Clocky Rails Backend}[http://github.com/bruz/clocky-backend-rails] as 
 described at http://github.com/bruz/clocky-backend-rails/blob/master/README.rdoc.
 Make sure to run it on port 3000 (the Rails default) as that's what the Cappuccino app will expect.
 
