@@ -1,0 +1,31 @@
+== Clocky Cappuccino Frontend
+
+Clocky is a trivial web application that is being implemented using different client-side 
+frameworks. This is the Cappuccino[http://cappuccino.org] implementation. It requires 
+the {Clocky Rails Backend}[http://github.com/bruz/clocky-backend-rails.git].
+
+=== Running the Clocky Cappuccino Frontend
+
+Install the {Clocky Rails Backend}[http://github.com/bruz/clocky-backend-rails.git] as 
+described at http://github.com/bruz/clocky-backend-rails/blob/master/README.rdoc.
+Make sure to run it on port 3000 (the Rails default) as that's what the Cappuccino app will expect.
+
+Make sure you have the following prerequisites:
+- Ruby
+- RubyGems
+- The sinatra RubyGem (which will install additional gem dependencies)
+
+Once those are in place, simply do:
+
+  ruby server.rb
+
+You should now be able to browse to http://localhost:4567 and see the application.
+
+=== Why do I need all this Ruby stuff?
+
+Although Cappuccino has no Ruby dependencies, the Clocky Cappuccino app needs to be able to 
+access a Rails backend that is running on a different port. Due to same-origin policies in 
+browsers this requires a workaround of either putting the Cappuccino app inside the Rails 
+app public folder or running the Cappuccino app under a server that proxies requests for 
+the Rails backend. I've chosen the latter method via a simple Sinatra setup so that I can keep 
+the Rails backend and Cappuccino frontends separate.
