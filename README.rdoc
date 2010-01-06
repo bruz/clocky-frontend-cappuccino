@@ -14,6 +14,7 @@ Make sure you have the following prerequisites:
 - Ruby
 - RubyGems
 - The sinatra RubyGem (which will install additional gem dependencies)
+- The mongrel RubyGem, version >= 1.1.5 (earlier versions cause errors when communicating with the backend)
 
 Once those are in place, simply do:
 
