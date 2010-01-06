@@ -41,30 +41,29 @@
 
     // -- the split view
     var splitView = [[CPSplitView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([contentView bounds]), CGRectGetHeight([contentView bounds]))];
+    [splitView setDelegate:self];
     [splitView setVertical:YES] ;
     [splitView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable ]; 
     [contentView addSubview:splitView] ;
 
     // --- the projects scroll view
-    var projectListScrollView = [[CPScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200, CGRectGetHeight([contentView bounds]))] ;
+    var projectListScrollView = [[CPScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200, CGRectGetHeight([splitView bounds]))] ;
     [projectListScrollView setHasHorizontalScroller:NO] ;
     [projectListScrollView setAutohidesScrollers:YES] ;
+
+    // --- the project details view
+    var projectDetailsView = [[CPView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([splitView bounds])-200, CGRectGetHeight([splitView bounds]))]; //,
+    [projectDetailsView setBackgroundColor:[CPColor colorWithRed:230.0 / 255.0 green:230.0 / 255.0 blue:230.0 / 255.0 alpha:1.0]];
+
     [splitView addSubview:projectListScrollView] ;
+    [splitView addSubview:projectDetailsView] ;
 
     // --- the projects collection view
-    var projectListView = [[ProjectListView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([contentView bounds]), 200.0)] ;
+    var projectListView = [[ProjectListView alloc] initWithFrame:[splitView bounds]] ;
     [projectListView setDelegate:projectsController] ;
     [projectsController setProjectListView:projectListView] ;
     [projectsController loadProjects] ;
     [projectListScrollView setDocumentView:projectListView] ;
-
-    // --- the project details view
-    var projectDetailsView = [[CPScrollView alloc] initWithFrame:CGRectMake(210.0, 0.0, CGRectGetWidth([contentView bounds])- 200, CGRectGetHeight([contentView bounds]) - 0)],
-    detailsContentView = [projectDetailsView contentView] ;
-    [projectDetailsView setHasHorizontalScroller:NO] ;
-    [projectDetailsView setAutohidesScrollers:YES] ;
-    [projectDetailsView setBackgroundColor:[CPColor colorWithRed:230.0 / 255.0 green:230.0 / 255.0 blue:230.0 / 255.0 alpha:1.0]];
-    [splitView addSubview:projectDetailsView] ;
 
     // --- the project details label
     projectDetailsLabel = [[CPTextField alloc] initWithFrame:CGRectMake(20, 20, 200, 28.0)] ;
@@ -128,14 +127,15 @@
     [projectDetailsView addSubview:projectSessionsLabel];
 
     // --- the sessions scroll view
-    var sessionListScrollView = [[CPScrollView alloc] initWithFrame:CGRectMake(20, 190, CGRectGetWidth([detailsContentView bounds]) - 140, CGRectGetHeight([detailsContentView bounds]) - 180)] ;
+    var sessionListScrollView = [[CPScrollView alloc] initWithFrame:CGRectMake(20, 190, CGRectGetWidth([projectDetailsView bounds]) - 40, CGRectGetHeight([projectDetailsView bounds]) - 210)] ;
+    [sessionListScrollView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     [sessionListScrollView setHasHorizontalScroller:NO] ;
     [sessionListScrollView setAutohidesScrollers:YES] ;
     [sessionListScrollView setBackgroundColor:[CPColor whiteColor]];
     [projectDetailsView addSubview:sessionListScrollView] ;
 
     // --- the sessions collection view
-    var sessionListView = [[SessionListView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth([contentView bounds]) - 140, CGRectGetHeight([detailsContentView bounds]) - 180)] ;
+    var sessionListView = [[SessionListView alloc] initWithFrame:[sessionListScrollView bounds]] ;
     [sessionListScrollView setDocumentView:sessionListView] ;
 
     // --- the timer clock
